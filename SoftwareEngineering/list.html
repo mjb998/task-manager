@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html ng-app="todoApp" lang="en">
+  <head>
+ 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+          
+          <!~~ Optional theme ~~>
+          <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+              integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+              crossorigin="anonymous">
+              <script
+                  src="https://code.jquery.com/jquery-3.2.1.min.js"
+                  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                  crossorigin="anonymous"></script>
+              
+              <!~~ Latest compiled and minified JavaScript ~~>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                  crossorigin="anonymous"></script>
+ 
+      
+ 
+      
+      
+      
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="todo.js"></script>
+    <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+    <h2>Student Information</h2>
+    <div ng-controller="TodoListController as todoList">
+      <form ng-submit="todoList.addTodo()" class="well">
+                    <input type="stuNum" pattern="[0-9]{8}" ng-model="todoList.todostuNum" size="30" placeholder="Student Number" ng-required="true">Must be 8 digits long <br>
+                    <input type="name" pattern="[A-Za-z ]{1,55}" ng-model="todoList.todoname" size="30" placeholder="Name" ng-required="true">Can only contain letters<br>
+                    <input type="add" ng-model="todoList.todoadd" size="30" placeholder="Address" ng-required="true"><br>
+                    <input type="phoneNum" pattern="[0-9]{10}" ng-model="todoList.todophoneNum" size="30" placeholder="Phone Number" ng-required="true">Must be 10 digits long<br>
+                    <input type="gpa" pattern="[0-4.0-9]{3}" ng-model="todoList.todogpa" size="30" placeholder="GPA" ng-required="true">Must be between 0 - 4<br>
+                    <input type="acPlan" ng-model="todoList.todoacPlan" size="30" placeholder="Academic Plan" ng-required="true"><br>
+                    Please select a class level:<br>
+                    <select type="level" ng-model="todoList.todolevel" ng-required="true"><br>
+                        <option value="Freshman">Freshman</option>
+                          <option value="Sophomore">Sophomore</option>
+                          <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Alumni">Alumni</option>
+                    </select>
+                    <br>
+          
+<!--                    <input type="level" ng-model="todoList.todolevel" size="30" placeholder="Level" ng-required="true"><br>-->
+                    Please select a status:<br>
+                    <select type="status" ng-model="todoList.todostatus" ng-required="true" placeholder="Status"><br>
+                          <option value="active">Active</option>
+                          <option value="inactive">Inactive</option>
+                    </select>
+        <input class="btn btn-success" type="submit" value="add">
+      </form>
+        
+        <div class="well">
+            <table class="table trable-striped">
+                <thead>
+                    <tr>
+                        <th>Student Number</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>GPA</th>
+                        <th>Academic Plan</th>
+                        <th>Level</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="todo in todoList.todos track by $index">
+                        <td>
+                            <label class="checkbox">
+                                <input type="checkbox" ng-model="todo.done" ng-click="todoList.refresh(this)">
+                                <span class="done-{{todo.done}}">{{todo.stuNum}}</span>
+                                </label>
+                        </td> 
+                        <td>    
+                                <span class="done-{{todo.done}}">{{todo.name}}</span>
+                        </td>
+                        <td>
+                            <span class="done-{{todo.done}}">{{todo.add}}</span>
+                        </td>
+                        <td>
+                            <span class="done-{{todo.done}}">{{todo.phoneNum}}</span>
+                        </td>
+                        <td>
+                                <span class="done-{{todo.done}}">{{todo.gpa}}</span>
+                        </td>
+                        <td>
+                            <span class="done-{{todo.done}}">{{todo.acPlan}}</span> 
+                        </td>
+                        <td>
+                                <span class="done-{{todo.done}}">{{todo.level}}</span>
+                        </td>
+                        <td>
+                                <span class="done-{{todo.done}}">{{todo.status}}</span>
+                        </td>    
+
+<!--                                <span class="glyphicon glyphicon-remove pull-right" ng-click="todoList.removeTodos(todo)"></span>-->
+                                
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+        
+      
+        <div class="btn btn-danger" ng-click="todoList.archive()">Delete</div>
+        <br><br>
+        <div class="well">
+            <span>{{ todoList.remaining() }} of {{ todoList.todos.length }} remaining</span>
+            <br>
+            <span>{{todoList.activeCount()}} active students</span>  <br>
+            <span>{{todoList.inactiveCount()}} inactive students</span>
+        </div>
+    </div>
+   <!--  </section> -->
+  </body>
+</html>
