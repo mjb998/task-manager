@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email Notification</title>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>
+	<script src="emailNotificationJS.js"></script>
+</head>
+<body>
+	<div class="container" ng-app ng-controller="EmailController">
+		<table ng-controller="EmailController" class="table table-bordered table-condensed">
+			<tbody>
+			<!-- <tbody ng-init="
+				emails = [
+					{from: 'John', subject: 'I love angular', date: 'Jan 1'},
+					{from: 'Jack', subject: 'Angular and I are just friends', date: 'Feb 15'},
+					{from: 'Ember', subject: 'I hate you Angular!', date: 'Dec 8'}
+				]
+			"> -->
+				<tr ng-repeat="email in emails" ng-click="showPopup(email)">
+					<td>{{ email.from }}</td>
+					<td>{{ email.subject }}</td>
+					<td>{{ email.date }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn btn-primary" ng-click="showComposePopup()">Compose</button>
+		<button class="btn btn-primary" ng-click="showPopup()">isPopup?</button>
+		<div class="modal" ng-show="isPopupVisible">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="closePopup()">x</button>
+				<h3>{{selectedEmail.subject}}</h3>
+			</div>
+			<div class="modal-body">
+				<strong>From:</strong> {{selectedEmail.from}} <br />
+				<strong>Date:</strong> {{selectedEmail.date}} <br />
+				<br />
+				<p>
+					Hey You, <br />
+					<br />
+					How you doing?<br />
+					<br />
+					Sincerely<br />
+					Your Bro
+				</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-primary" ng-click="closePopup()">Close</a>
+			</div>
+		</div>
+		<div class="modal" ng-show="isComposePopupVisible">
+			<div class="modal-header">
+				<button type="button" class="close" ng-click="closeComposePopup()">x</button>
+				<h3>Compose Email</h3>
+			</div>
+			<div class="modal-body">
+				<form>
+					<input type="text" placeholder="To" style="width:95%;" ng-model="composeEmail.to"><br />
+					<input type="text" placeholder="Subject" style="width:95%;" ng-model="composeEmail.subject"><br />
+					<textarea style="width:95%;" rows="10" ng-model="composeEmail.body"></textarea>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn">Close</a>
+				<a href="#" class="btn btn-primary" ng-click="sendEmail()">Send</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
