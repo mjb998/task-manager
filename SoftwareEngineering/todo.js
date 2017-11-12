@@ -41,22 +41,15 @@ angular.module('todoApp', [])
         };
     
         todoList.addTodo = function(){
-            todoList.todos.push({stuNum: todoList.todostuNum, 
-                                 name: todoList.todoname, add: todoList.todoadd, 
-                                 phoneNum: todoList.todophoneNum, 
-                                 gpa: todoList.todogpa, 
-                                 acPlan: todoList.todoacPlan, 
-                                 level: todoList.todolevel, 
+            todoList.todos.push({task: todoList.todotask, 
+                                 tag: todoList.todotag, 
+                                 date: todoList.tododate,  
                                  status: todoList.todostatus, 
                                  done:false});
             
-            todoList.todostuNum = '';
-            todoList.todoname = '';
-            todoList.todoadd = '';
-            todoList.todophoneNum = '';
-            todoList.todogpa = '';
-            todoList.todoacPlan = '';
-            todoList.todolevel = '';
+            todoList.todotask = '';
+            todoList.todotag = '';
+            todoList.tododate = '';
             
             localStorage.setItem('todos', JSON.stringify(todoList.todos));
         };

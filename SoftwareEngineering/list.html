@@ -25,24 +25,20 @@
               <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                   integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
                   crossorigin="anonymous"></script>
- 
+
       
- 
-      
-      
-      
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
-    <script src="todo.js"></script>
-    <link rel="stylesheet" href="todo.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+                <script src="todo.js"></script>
+                <link rel="stylesheet" href="todo.css">
   </head>
   <body>
        
-    <h2>Student Information</h2>
+    <h2>Tasks</h2>
     <div class="btn btn-success" href="#" data-toggle="modal" data-target="#taskModal">Add Task</div>  
       
       
       
-<!--    Add Task-->
+<!--    Add Task modal-->
       <div class="modal fade" id="taskModal" tabindex="-1" role="dialog"
         aria-labelledby="taskModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -60,9 +56,9 @@
 
                     <!-- Modal Body -->
                     <form ng-submit="todoList.addTodo()" class="well">
-                    <input type="name" ng-model="todoList.todoname" size="30" placeholder="Task" ng-required="true"><br><br>
-                    <input type="add" ng-model="todoList.todoadd" size="30" placeholder="Tag" ng-required="true"><br><br>
-                    <input type="date" ng-model="todoList.todophoneNum" size="30" placeholder="Due Date" ng-required="true"><br><br>
+                    <input type="name" ng-model="todoList.todotask" size="30" placeholder="Task" ng-required="true"><br><br>
+                    <input type="add" ng-model="todoList.todotag" size="30" placeholder="Tag" ng-required="true"><br><br>
+                    <input type="date" ng-model="todoList.tododate" size="30" placeholder="Due Date" ng-required="true"><br><br>
           
 <!--                    <input type="level" ng-model="todoList.todolevel" size="30" placeholder="Level" ng-required="true"><br>-->
                     Please select a status:<br>
@@ -90,8 +86,6 @@
       
       
     <div ng-controller="TodoListController as todoList">
-      
-        
         <div class="well">
             <table class="table trable-striped">
                 <thead>
@@ -107,14 +101,14 @@
                         <td>
                             <label class="checkbox">
                                 <input type="checkbox" ng-model="todo.done" ng-click="todoList.refresh(this)">
-                                <span class="done-{{todo.done}}">{{todo.name}}</span>
+                                <span class="done-{{todo.done}}">{{todo.task}}</span>
                                 </label>
                         </td> 
                         <td>
-                            <span class="done-{{todo.done}}">{{todo.add}}</span>
+                            <span class="done-{{todo.done}}">{{todo.tag}}</span>
                         </td>
                         <td>
-                            <span class="done-{{todo.done}}">{{todo.phoneNum}}</span>
+                            <span class="done-{{todo.done}}">{{todo.date}}</span>
                         </td>
                         <td>
                                 <span class="done-{{todo.done}}">{{todo.status}}</span>
