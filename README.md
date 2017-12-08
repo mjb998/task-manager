@@ -48,4 +48,30 @@ Our goal was to create a task manager while experimenting with unfamiliar progra
 
 **How to use:**
 
-1. First go to https://whatnext.site/ to this main page:
+* First go to https://whatnext.site/ to this main page:
+
+![Home Page](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss1.png)
+
+* From here you can either create a new user:
+
+![New User](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss10.png)
+
+OR you can sign into your existing account:
+
+![Existing](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss9.png)  
+
+**NOTE:** If you put an incorrect username or password, it will alert you:
+
+![Incorrect](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss8.png)
+
+* After logging in properly, or creating your account, you will be redirected to your task page:
+
+![Task Page](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss7.png)
+
+* From here you can create your own tasks using the form at the top and/or log out of your account.
+
+![Create Task](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss4.png)
+
+* Once you are done, you are able to delete a task by pressing the Delete button.
+
+![Delete](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss5.png)
