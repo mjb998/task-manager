@@ -26,7 +26,6 @@ Our goal was to create a task manager while experimenting with unfamiliar progra
 * MongoDB
 
 **Use Case Diagram:**
-![Use Case](https://raw.githubusercontent.com/mjb998/task-manager/Nicolle/Screenshots/ss11.png)
 
 **What did each member do? What were their issues?**
 * **Nicolle Lenzmeier:** My main goal was to get an initial start on the sign in an login for new and returning users. I originally had it to where the main page would display a side menu, having an option for both new and returning users. Whichever decision they made, a modal would pop up asking for the required information.
