@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Task Manager</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/css/simple-sidebar.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <br>
+    <h1 style="text-align:center;">Task Manager</h1>
+    <hr>
+    <div style="width: 100%;">
+        <div style="float:left; padding: 40px;">
+            <h2>New user? Sign up now!</h2>
+            <form id="thisIsID" method="post" role="form" action="/post_signup">
+                <label for="firstname">First</label>
+                <input type="text" name="firstname" placeholder="First name" required/>
+                <br>
+
+                <label for="lastname">Last</label>
+                <input type="text" name="lastname" placeholder="Last name" required/>
+                <br>
+
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email" required/>
+                <br>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" required/>
+                <br>
+
+                <br><br>
+                <input type="submit" name="submit" class="btn btn-primary"/>
+            </form>
+        </div>
+        
+    
+<!--    still to do...-->
+        <div style="float:right; padding: 40px;">
+            <h2>Returning member? Welcome back!</h2>
+            <form id="blah" method="post" role="form" action="/post_login">
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email" required/>
+                <br>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" required/>
+                <br>
+
+                <br><br>
+                <input type="submit" name="submit" class="btn btn-primary"/>
+            </form>
+        </div>
+    </div>
+    
+    
+</body>
+
+</html>

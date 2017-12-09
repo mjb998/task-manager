@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<!--ng-app="signIn"-->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Task Manager</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/css/simple-sidebar.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<!--    <script src="../index.js"></script>-->
+
+    <style>
+        body{
+            background-color: #566573;
+        }
+
+        .white{
+            color: white;
+        }
+
+        .nav{
+
+            position: fixed;
+        }
+    </style>
+
+    <script>
+
+        console.log("hello");
+
+        function myFunction(){
+            console.log("Hello from myFunction");
+            var first = document.getElementById("firstname").value;
+            console.log(first);
+
+            var last = document.getElementById("lastname").value;
+            console.log(last);
+
+            //var email = "email"
+            var email = document.getElementById("mail").value;
+            console.log(email);
+
+            //var pass = "yo"
+            var pass = document.getElementById("pass").value;
+            console.log(pass);
+
+            //Not sure if I should send it like this... what do you think?
+            var data = {
+                fname  : first,
+                lname : last,
+                msg  : email,
+                pw: pass
+            };
+
+            //var $http = angular.injector(['ng']).get('$http');
+            //var res = $http.post('/newPost', data);
+            var http = new XMLHttpRequest();
+            var url = "/newPost";
+            var params = "firstname="+first+"&lastname="+last+"&email="+email+"&password="+pass;
+            http.open("POST", url, true);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            http.onreadystatechange = function() {
+                    //Call a function when the state changes.
+                    if (http.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                        // Request finished. Do processing here.
+                        console.log("Success in posting.");
+                    }
+            }
+
+            http.send(params);
+
+        }
+        //end of myFunction()
+
+        function signIn(){
+            console.log("Hello from signIn");
+            //var email = "email"
+            var email = document.getElementById("email").value;
+            console.log(email);
+
+            //var pass = "yo"
+            var pass = document.getElementById("password").value;
+            console.log(pass);
+
+            //pass to index.js to check for reauthentication
+            var login = {
+                msg: email,
+                pw: pass
+            };
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" class="nav" >
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Welcome!
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#newMemberModal">New User</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="white">
+            <div class="container-fluid">
+                <h1>Welcome!</h1>
+                <p>Ready to get organized? Ready to never miss an assignment, meeting, or appointment again?</p>
+                <p>Perfect! You are at the right place. Here you can make sure you are always on top of everything on your calendar.</p>
+<!--                <a href="#menu-toggle" class="btn btn-success" id="menu-toggle">Get Started</a>-->
+
+                 <h5>Will fill with shit lateeeeeeer.</h5>
+                <i class="fa fa-angellist"></i>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+
+
+
+
+
+
+<!-- SIGN IN MODAL -->
+      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog"
+        aria-labelledby="signInModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+                        <button style="float:left;"type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                        </button>
+
+                    </div>
+
+                    <!-- Modal Body -->
+                    <form id="thisIsID" method="post" onclick="signIn()" class="form-horizontal" role="form" action="">
+                        <div class="modal-body">
+                            <input type="hidden" name="action" value="login" />
+                            <div>
+                                <h3>Welcome Back!</h3>
+                                <h4>Sign in and catch up on your busy life.</h4>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label"
+                                for="email">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="email" class="form-control"
+                                    id="email" placeholder="Email"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"
+                                for="password">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control"
+                                    id="password" placeholder="Password"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <input type="submit" name="submit" class="btn btn-primary"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<!--End of sign in modal   -->
+
+
+<!--NEW MEMBER MODAL    -->
+<div ng-controller="newMem">
+    <div class="modal fade" id="newMemberModal" tabindex="-1" role="dialog"
+        aria-labelledby="newMemberModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">New Member</h4>
+                        <button style="float:left;"type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                        </button>
+
+                    </div>
+
+                    <!-- Modal Body -->
+<!--                    action="/list.html"-->
+                    <form id="newMember" onsubmit="myFunction()" method="post" class="form-horizontal">
+                        <div class="modal-body">
+<!--                            <input type="hidden" name="action" value="login" />-->
+                            <div>
+                                <h3>New Member?</h3>
+                                <h4>Sign up and start getting organized!</h4>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label"
+                                for="firstname">First</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="firstname" class="form-control"
+                                    id="firstname" placeholder="First name" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label"
+                                for="lastname">Last</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="lastname" class="form-control"
+                                    id="lastname" placeholder="Last name" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"
+                                for="email">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="email" class="form-control"
+                                    id="mail" placeholder="Email" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"
+                                for="password">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control"
+                                    id="pass" placeholder="Password" required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <input type="submit" name="submit" class="btn btn-primary"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+  </div>
+<!--end of new member modal -->
+
+
+
+
+</body>
+
+</html>

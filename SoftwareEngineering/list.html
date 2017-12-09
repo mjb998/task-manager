@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html ng-app="todoApp" lang="en">
+  <head>
+ 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+          
+          <!-- Optional theme -->
+          <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+              integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+              crossorigin="anonymous">
+              <script
+                  src="https://code.jquery.com/jquery-3.2.1.min.js"
+                  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                  crossorigin="anonymous"></script>
+              
+              <!-- Latest compiled and minified JavaScript -->
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                  crossorigin="anonymous"></script>
+
+      
+                <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+                <script src="todo.js"></script>
+                <link rel="stylesheet" href="todo.css">
+  </head>
+  <body>
+       
+    <h2>Tasks</h2>
+    <div class="btn btn-success" href="#" data-toggle="modal" data-target="#taskModal">Add Task</div>  
+      
+   <div ng-controller="TodoListController as todoList"> 
+      
+<!--    Add Task modal-->
+      <div class="modal fade" id="taskModal" tabindex="-1" role="dialog"
+        aria-labelledby="taskModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button style="float:right;"type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Add Task</h4>
+                        
+                        
+                    </div>
+
+                    <!-- Modal Body -->
+                    <form ng-submit="todoList.addTodo()" class="well">
+                    <input type="name" ng-model="todoList.todotask" size="30" placeholder="Task" ng-required="true"><br><br>
+                    <input type="add" ng-model="todoList.todotag" size="30" placeholder="Tag" ng-required="true"><br><br>
+                    <input type="date" ng-model="todoList.tododate" size="30" placeholder="Due Date" ng-required="true"><br><br>
+          
+<!--                    <input type="level" ng-model="todoList.todolevel" size="30" placeholder="Level" ng-required="true"><br>-->
+                    Please select a status:<br>
+                    <select type="status" ng-model="todoList.todostatus" ng-required="true" placeholder="Status"><br>
+                          <option value="Completed">Completed</option>
+                          <option value="Pending">Pending</option>
+                    </select><br>
+                        <hr>
+        <input class="btn btn-success" type="submit" value="add">
+      </form>
+                </div>
+            </div>
+        </div>
+      
+</div>        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    <div ng-controller="TodoListController as todoList">
+        <div class="well">
+            <table class="table trable-striped">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Tag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="todo in todoList.todos track by $index">
+                        <td>
+                            <label class="checkbox">
+                                <input type="checkbox" ng-model="todo.done" ng-click="todoList.refresh(this)">
+                                <span class="done-{{todo.done}}">{{todo.task}}</span>
+                                </label>
+                        </td> 
+                        <td>
+                            <span class="done-{{todo.done}}">{{todo.tag}}</span>
+                        </td>
+                        <td>
+                            <span class="done-{{todo.done}}">{{todo.date}}</span>
+                        </td>
+                        <td>
+                                <span class="done-{{todo.done}}">{{todo.status}}</span>
+                        </td>    
+
+<!--                                <span class="glyphicon glyphicon-remove pull-right" ng-click="todoList.removeTodos(todo)"></span>-->
+                                
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+        
+      
+        <div class="btn btn-danger" ng-click="todoList.archive()">Delete</div>
+        <br><br>
+    </div>
+   <!--  </section> -->
+  </body>
+</html>
