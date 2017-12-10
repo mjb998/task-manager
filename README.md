@@ -46,7 +46,7 @@ Our goal was to create a task manager while experimenting with unfamiliar progra
   I incorporated pm2 into our sever that allows node to constantly run in the background, so that you don't have to manually start the web server every time you want the website to be live.
 
 
-* **Jeremy Gonzales:** For our software engineering group final project, our group decided to create a MEAN stack task manager app that would create/record/delete tasks that a user created.
+* **Jeremy Gonzalez:** For our software engineering group final project, our group decided to create a MEAN stack task manager app that would create/record/delete tasks that a user created.
 
   On this project I had not worked with MongoDB, ExpressJS, AngularJS, or NodeJS before so this entire process was new to me. I physically worked on displaying the tasks that a user has on the task page, adding new tasks and linking it to the database, and overall bug fixing.
 
