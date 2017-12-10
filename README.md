@@ -3,7 +3,7 @@
 **Members:**
 * Nicolle Lenzmeier
 * Austin Hartschen
-* Jeremy Gonzales
+* Jeremy Gonzalez
 * Matt Barmann
 
 **Project:** A task manager
